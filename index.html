@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>小绵羊的公益站 · LittleSheep API</title>
+  <title>公益 AI API 服务站</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -327,30 +327,25 @@
 
 <canvas id="sakura" style="position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.45;"></canvas>
 
-<!-- Announce -->
-<div class="announce" style="position:relative;z-index:201;">
-  🐑 &nbsp;小绵羊公益站 · 免费提供 AI API 中转服务，长期稳定运营中 · 欢迎加群交流 🌸&nbsp;
-</div>
-
 <!-- Navbar -->
 <nav class="navbar" id="navbar">
   <div class="navbar-inner">
     <a href="#" class="logo">
-      <div class="logo-icon">🐑</div>
+      <div class="logo-icon">✨</div>
       <div>
-        <div class="logo-text">LittleSheep</div>
-        <div class="logo-sub">小绵羊的公益站</div>
+        <div class="logo-text">API Home</div>
+        <div class="logo-sub">公益 AI API 服务</div>
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="#features">功能特性</a></li>
-      <li><a href="#models">支持模型</a></li>
-      <li><a href="#guide">使用教程</a></li>
-      <li><a href="#faq">常见问题</a></li>
+      <li><a href="#features">核心能力</a></li>
+      <li><a href="#models">模型列表</a></li>
+      <li><a href="#guide">接入指南</a></li>
+      <li><a href="#faq">帮助问答</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="/login" class="btn btn-ghost" style="padding:7px 16px;">登录</a>
-      <a href="/register" class="btn btn-pink">注册 →</a>
+      <a href="/docs" class="btn btn-ghost" style="padding:7px 16px;">文档</a>
+      <a href="/models" class="btn btn-pink">模型列表 →</a>
     </div>
   </div>
 </nav>
@@ -363,7 +358,7 @@
   <span class="deco" style="bottom:24%;right:8%;animation-duration:5s;animation-delay:2s;">💫</span>
 
   <div style="position:relative;z-index:2;">
-    <div class="hero-tag"><span>🐑</span> 小绵羊的公益站 · LittleSheep API</div>
+    <div class="hero-tag">公益 AI API 服务平台</div>
 
     <h1>公益开放的 <em>AI 中转</em><br/>稳定 · 免费 · 开箱即用</h1>
 
@@ -373,7 +368,7 @@
     </p>
 
     <div class="hero-btns">
-      <a href="/register" class="btn btn-pink btn-lg">🌸 免费注册</a>
+      <a href="/docs" class="btn btn-pink btn-lg">🌸 免费接入</a>
       <a href="#guide"    class="btn btn-blue btn-lg">📖 查看教程</a>
       <a href="https://status.example.com" target="_blank" class="btn btn-ghost btn-lg">
         <span style="width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block;animation:pulse-dot 2s infinite;"></span>
@@ -384,7 +379,7 @@
     <div class="stats-bar reveal">
       <div class="stat-item">
         <div class="stat-val">50+</div>
-        <div class="stat-label">支持模型数</div>
+        <div class="stat-label">模型数量</div>
       </div>
       <div class="stat-item">
         <div class="stat-val blue">99.9%</div>
@@ -406,14 +401,14 @@
 <section class="features" id="features">
   <div class="section-inner">
     <div class="section-header reveal">
-      <div class="section-tag">✦ 功能特性</div>
-      <h2 class="section-title">为什么选择 <em>小绵羊</em>？</h2>
+      <div class="section-tag">✦ 核心能力</div>
+      <h2 class="section-title">为什么选择 <em>本平台</em>？</h2>
       <p class="section-desc">专为开发者与学习者打造的公益 AI API 中转，稳定、便捷，不收一分钱 ♡</p>
     </div>
     <div class="features-grid">
       <div class="feat-card reveal"><div class="feat-icon">🌐</div><h3>多模型统一接入</h3><p>一个 API Key 接入 GPT、Claude、Gemini、DeepSeek 等所有主流模型，标准 OpenAI 格式，零改动切换。</p></div>
       <div class="feat-card reveal"><div class="feat-icon">⚡</div><h3>低延迟直连加速</h3><p>全球节点智能调度，国内直连优化，保障毫秒级响应，告别超时与限速，无需科学上网。</p></div>
-      <div class="feat-card reveal"><div class="feat-icon">🎁</div><h3>完全公益免费</h3><p>小绵羊公益站由个人维护，不收取任何费用，注册即可使用，额度充裕，长期稳定运营。</p></div>
+      <div class="feat-card reveal"><div class="feat-icon">🎁</div><h3>完全公益免费</h3><p>本平台由个人维护，不收取任何费用，可直接使用，额度充裕，长期稳定运营。</p></div>
       <div class="feat-card reveal"><div class="feat-icon">📊</div><h3>详细用量统计</h3><p>完整的用量日志与数据看板，每一次请求清晰可见，方便了解自己的 Token 使用情况。</p></div>
       <div class="feat-card reveal"><div class="feat-icon">🛡️</div><h3>稳定高可用</h3><p>多渠道自动切换容灾，SLA 99.9% 保障，服务状态实时公示，可放心接入学习与测试环境。</p></div>
       <div class="feat-card reveal"><div class="feat-icon">🔑</div><h3>子 Token 管理</h3><p>支持创建多个子 Token，独立配置使用限额与有效期，方便多场景、多项目分开管理。</p></div>
@@ -425,7 +420,7 @@
 <section class="models" id="models">
   <div class="section-inner">
     <div class="section-header reveal">
-      <div class="section-tag">🤖 支持模型</div>
+      <div class="section-tag">🤖 可用模型</div>
       <h2 class="section-title">覆盖全球 <span class="em-blue">主流 AI 模型</span></h2>
       <p class="section-desc">持续更新接入最新模型，保证你始终用上最强大的 AI ✦</p>
     </div>
@@ -471,7 +466,7 @@
       <p class="section-desc">五分钟完成接入，开箱即用，完全免费 ♡</p>
     </div>
     <div class="steps-grid reveal">
-      <div class="step-card"><div class="step-num">01</div><h3>注册账号</h3><p>使用邮箱免费注册小绵羊账号，即时生效，无需审核，注册后即可获得使用额度。</p></div>
+      <div class="step-card"><div class="step-num">01</div><h3>创建账号</h3><p>使用邮箱免费创建平台账号，即时生效，无需审核，创建后即可获得使用额度。</p></div>
       <div class="step-card"><div class="step-num">02</div><h3>创建 API Key</h3><p>在控制台中创建专属 API Token，可设置额度上限和有效期，随时增删管理。</p></div>
       <div class="step-card"><div class="step-num">03</div><h3>替换接口地址</h3><p>将代码中的 OpenAI 地址替换为本站地址，API Key 换成你的 Token，其余保持不变。</p></div>
     </div>
@@ -485,13 +480,13 @@
       <pre class="code-pre"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    api_key=<span class="str">"sk-你的LittleSheep密钥"</span>,
+    api_key=<span class="str">"sk-你的API密钥"</span>,
     base_url=<span class="str">"https://api.littlesheep.example/v1"</span>,  <span class="cm"># ← 替换为本站地址</span>
 )
 
 response = client.chat.completions.create(
     model=<span class="str">"gpt-4o"</span>,
-    messages=[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"你好！小绵羊 🐑"</span>}]
+    messages=[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"你好！"</span>}]
 )
 <span class="kw">print</span>(response.choices[<span class="num">0</span>].message.content)</pre>
     </div>
@@ -502,13 +497,13 @@ response = client.chat.completions.create(
 <section class="faq" id="faq">
   <div class="section-inner">
     <div class="section-header reveal">
-      <div class="section-tag">❓ 常见问题</div>
+      <div class="section-tag">❓ 帮助问答</div>
       <h2 class="section-title">你可能想问的 <em>问题</em></h2>
     </div>
     <div class="faq-list reveal">
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span>💬 真的完全免费吗？有什么限制？</span><div class="faq-toggle">+</div></div>
-        <div class="faq-a">是的，小绵羊公益站由个人爱好者维护，完全免费。每个账号每日有合理的请求配额，防止滥用，足够个人学习和开发使用。如有更高需求可在群里联系站长。</div>
+        <div class="faq-a">是的，本站由个人爱好者维护，完全免费。每个账号每日有合理的请求配额，防止滥用，足够个人学习和开发使用。如有更高需求可在群里联系站长。</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span>💬 这个平台安全吗？会存储我的对话内容吗？</span><div class="faq-toggle">+</div></div>
@@ -524,7 +519,7 @@ response = client.chat.completions.create(
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span>💬 遇到问题怎么联系？</span><div class="faq-toggle">+</div></div>
-        <div class="faq-a">可以通过页面底部的 Telegram 群组联系站长，通常在 24 小时内回复。常见问题也可以查阅本页 FAQ 或文档站。</div>
+        <div class="faq-a">可以通过页面底部的 Telegram 群组联系站长，通常在 24 小时内回复。也可以查阅本页帮助问答或文档站。</div>
       </div>
     </div>
   </div>
@@ -532,11 +527,11 @@ response = client.chat.completions.create(
 
 <!-- CTA Banner -->
 <div class="cta-banner" style="position:relative;z-index:1;">
-  <div style="font-size:3rem;margin-bottom:20px;">🐑</div>
-  <h2>加入小绵羊，<em>立刻开始使用 AI</em></h2>
-  <p>注册即享免费额度，五分钟完成接入，长期公益，不收一分 ♡</p>
+  <div style="font-size:3rem;margin-bottom:20px;">✨</div>
+  <h2>立即开始，<em>快速接入 AI</em></h2>
+  <p>创建账号即享免费额度，五分钟完成接入，长期公益，不收一分 ♡</p>
   <div class="cta-btns">
-    <a href="/register" class="btn btn-pink btn-lg">🌸 免费注册</a>
+    <a href="/contact" class="btn btn-pink btn-lg">🌸 联系我们</a>
     <a href="/docs"     class="btn btn-blue btn-lg">📖 查看文档</a>
     <a href="https://t.me" target="_blank" class="btn btn-ghost btn-lg">💬 加入群组</a>
   </div>
@@ -548,8 +543,8 @@ response = client.chat.completions.create(
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#" class="logo">
-          <div class="logo-icon">🐑</div>
-          <div><div class="logo-text">LittleSheep</div><div class="logo-sub">小绵羊的公益站</div></div>
+          <div class="logo-icon">✨</div>
+          <div><div class="logo-text">API Home</div><div class="logo-sub">公益 AI API 服务</div></div>
         </a>
         <p>次世代公益 AI API 中转平台，连接全球顶级 AI 模型，为开发者和学习者提供免费、稳定的接入服务，长期运营 ♡</p>
         <div class="footer-social">
@@ -560,9 +555,7 @@ response = client.chat.completions.create(
       <div>
         <h4>快捷链接</h4>
         <ul>
-          <li><a href="/register">注册账号</a></li>
-          <li><a href="/login">用户登录</a></li>
-          <li><a href="/docs">API 文档</a></li>
+          <li><a href="/docs">接入文档</a></li>
           <li><a href="/models">模型列表</a></li>
           <li><a href="/status">服务状态</a></li>
         </ul>
@@ -570,7 +563,7 @@ response = client.chat.completions.create(
       <div>
         <h4>帮助支持</h4>
         <ul>
-          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#faq">帮助问答</a></li>
           <li><a href="/contact">联系我们</a></li>
           <li><a href="/terms">使用条款</a></li>
           <li><a href="/privacy">隐私政策</a></li>
@@ -578,7 +571,7 @@ response = client.chat.completions.create(
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 小绵羊的公益站 · LittleSheep API · Made with 🌸 · 基于 <a href="https://github.com/Calcium-Ion/new-api" target="_blank" style="color:var(--pink-deep);text-decoration:none;">new-api</a> 构建</span>
+      <span>© 2025 公益 AI API 服务站 · Made with 🌸 · 基于 <a href="https://github.com/Calcium-Ion/new-api" target="_blank" style="color:var(--pink-deep);text-decoration:none;">new-api</a> 构建</span>
       <span>ICP备xxxxxxxx号</span>
     </div>
   </div>
