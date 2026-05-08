@@ -41,7 +41,7 @@ jobs:
           fi
 
       - name: Install ESA CLI
-        run: npm install -g esa-cli@latest
+        run: npm install -g esa-cli@0.0.2-beta.0
 
       - name: Login to ESA (uses ESA_ACCESS_KEY_ID/ESA_ACCESS_KEY_SECRET env)
         env:
