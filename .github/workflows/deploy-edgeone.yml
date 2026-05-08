@@ -33,6 +33,6 @@ jobs:
       - name: Deploy to EdgeOne Pages
         uses: TencentEdgeOne/edgeone-pages-action@v1
         with:
-          token: ${{ env.EDGEONE_API_TOKEN }}
-          project-name: ${{ env.EDGEONE_PROJECT_NAME }}
+          token: ${{ secrets.EDGEONE_API_TOKEN }}
+          project-name: ${{ secrets.EDGEONE_PROJECT_NAME }}
           build-path: .

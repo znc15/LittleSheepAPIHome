@@ -43,8 +43,21 @@ jobs:
       - name: Install ESA CLI
         run: npm install -g esa-cli@latest
 
-      - name: Login to ESA
+      - name: Login to ESA (uses ESA_ACCESS_KEY_ID/ESA_ACCESS_KEY_SECRET env)
         run: esa-cli login
 
+      - name: Prepare deployment assets
+        run: |
+          rm -rf deploy-assets
+          mkdir -p deploy-assets
+          rsync -av --delete \
+            --exclude ".git/" \
+            --exclude ".github/" \
+            --exclude "node_modules/" \
+            --exclude "deploy-assets/" \
+            --exclude "README.md" \
+            --exclude "LICENSE" \
+            ./ deploy-assets/
+
       - name: Deploy to ESA
-        run: esa-cli deploy --name "${ESA_PROJECT_NAME}" --assets . --environment production --description "GitHub Actions deploy ${GITHUB_SHA}"
+        run: esa-cli deploy --name "${ESA_PROJECT_NAME}" --assets ./deploy-assets --environment production --description "GitHub Actions deploy ${GITHUB_SHA}"
