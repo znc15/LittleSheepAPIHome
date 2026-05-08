@@ -1,0 +1,66 @@
+name: Deploy to Alibaba Cloud ESA
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate required secrets
+        env:
+          ESA_ACCESS_KEY_ID: ${{ secrets.ESA_ACCESS_KEY_ID }}
+          ESA_ACCESS_KEY_SECRET: ${{ secrets.ESA_ACCESS_KEY_SECRET }}
+          ESA_PROJECT_NAME: ${{ secrets.ESA_PROJECT_NAME }}
+        run: |
+          if [ -z "${ESA_ACCESS_KEY_ID}" ]; then
+            echo "Missing secret: ESA_ACCESS_KEY_ID"
+            exit 1
+          fi
+          if [ -z "${ESA_ACCESS_KEY_SECRET}" ]; then
+            echo "Missing secret: ESA_ACCESS_KEY_SECRET"
+            exit 1
+          fi
+          if [ -z "${ESA_PROJECT_NAME}" ]; then
+            echo "Missing secret: ESA_PROJECT_NAME"
+            exit 1
+          fi
+
+      - name: Install ESA CLI
+        run: npm install -g esa-cli@0.0.2-beta.0
+
+      - name: Login to ESA (uses ESA_ACCESS_KEY_ID/ESA_ACCESS_KEY_SECRET env)
+        env:
+          ESA_ACCESS_KEY_ID: ${{ secrets.ESA_ACCESS_KEY_ID }}
+          ESA_ACCESS_KEY_SECRET: ${{ secrets.ESA_ACCESS_KEY_SECRET }}
+        run: esa-cli login
+
+      - name: Prepare deployment assets
+        run: |
+          rm -rf deploy-assets
+          mkdir -p deploy-assets
+          rsync -av --delete \
+            --exclude ".git/" \
+            --exclude ".github/" \
+            --exclude "node_modules/" \
+            --exclude "deploy-assets/" \
+            --exclude "README.md" \
+            --exclude "LICENSE" \
+            ./ deploy-assets/
+
+      - name: Deploy to ESA
+        run: esa-cli deploy --name "${{ secrets.ESA_PROJECT_NAME }}" --assets ./deploy-assets --environment production --description "GitHub Actions deploy ${GITHUB_SHA}"

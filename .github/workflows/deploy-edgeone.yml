@@ -1,0 +1,39 @@
+name: Deploy to Tencent EdgeOne
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate required secrets
+        env:
+          EDGEONE_API_TOKEN: ${{ secrets.EDGEONE_API_TOKEN }}
+          EDGEONE_PROJECT_NAME: ${{ secrets.EDGEONE_PROJECT_NAME }}
+        run: |
+          if [ -z "${EDGEONE_API_TOKEN}" ]; then
+            echo "Missing secret: EDGEONE_API_TOKEN"
+            exit 1
+          fi
+          if [ -z "${EDGEONE_PROJECT_NAME}" ]; then
+            echo "Missing secret: EDGEONE_PROJECT_NAME"
+            exit 1
+          fi
+
+      - name: Deploy to EdgeOne Pages
+        # Pinned to edgeone-pages-action tag v1
+        uses: TencentEdgeOne/edgeone-pages-action@025b878b4c30de49cf26d147b64190c76c292037
+        with:
+          token: ${{ secrets.EDGEONE_API_TOKEN }}
+          project-name: ${{ secrets.EDGEONE_PROJECT_NAME }}
+          build-path: .
