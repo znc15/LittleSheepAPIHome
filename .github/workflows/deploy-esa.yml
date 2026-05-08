@@ -12,10 +12,6 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      ESA_ACCESS_KEY_ID: ${{ secrets.ESA_ACCESS_KEY_ID }}
-      ESA_ACCESS_KEY_SECRET: ${{ secrets.ESA_ACCESS_KEY_SECRET }}
-      ESA_PROJECT_NAME: ${{ secrets.ESA_PROJECT_NAME }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,6 +22,10 @@ jobs:
           node-version: "20"
 
       - name: Validate required secrets
+        env:
+          ESA_ACCESS_KEY_ID: ${{ secrets.ESA_ACCESS_KEY_ID }}
+          ESA_ACCESS_KEY_SECRET: ${{ secrets.ESA_ACCESS_KEY_SECRET }}
+          ESA_PROJECT_NAME: ${{ secrets.ESA_PROJECT_NAME }}
         run: |
           if [ -z "${ESA_ACCESS_KEY_ID}" ]; then
             echo "Missing secret: ESA_ACCESS_KEY_ID"
@@ -44,6 +44,9 @@ jobs:
         run: npm install -g esa-cli@latest
 
       - name: Login to ESA (uses ESA_ACCESS_KEY_ID/ESA_ACCESS_KEY_SECRET env)
+        env:
+          ESA_ACCESS_KEY_ID: ${{ secrets.ESA_ACCESS_KEY_ID }}
+          ESA_ACCESS_KEY_SECRET: ${{ secrets.ESA_ACCESS_KEY_SECRET }}
         run: esa-cli login
 
       - name: Prepare deployment assets
@@ -60,4 +63,4 @@ jobs:
             ./ deploy-assets/
 
       - name: Deploy to ESA
-        run: esa-cli deploy --name "${ESA_PROJECT_NAME}" --assets ./deploy-assets --environment production --description "GitHub Actions deploy ${GITHUB_SHA}"
+        run: esa-cli deploy --name "${{ secrets.ESA_PROJECT_NAME }}" --assets ./deploy-assets --environment production --description "GitHub Actions deploy ${GITHUB_SHA}"
