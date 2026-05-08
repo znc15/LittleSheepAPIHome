@@ -1,0 +1,50 @@
+name: Deploy to Alibaba Cloud ESA
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      ESA_ACCESS_KEY_ID: ${{ secrets.ESA_ACCESS_KEY_ID }}
+      ESA_ACCESS_KEY_SECRET: ${{ secrets.ESA_ACCESS_KEY_SECRET }}
+      ESA_PROJECT_NAME: ${{ secrets.ESA_PROJECT_NAME }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate required secrets
+        run: |
+          if [ -z "${ESA_ACCESS_KEY_ID}" ]; then
+            echo "Missing secret: ESA_ACCESS_KEY_ID"
+            exit 1
+          fi
+          if [ -z "${ESA_ACCESS_KEY_SECRET}" ]; then
+            echo "Missing secret: ESA_ACCESS_KEY_SECRET"
+            exit 1
+          fi
+          if [ -z "${ESA_PROJECT_NAME}" ]; then
+            echo "Missing secret: ESA_PROJECT_NAME"
+            exit 1
+          fi
+
+      - name: Install ESA CLI
+        run: npm install -g esa-cli@latest
+
+      - name: Login to ESA
+        run: esa-cli login --ak "${ESA_ACCESS_KEY_ID}" --sk "${ESA_ACCESS_KEY_SECRET}"
+
+      - name: Deploy to ESA
+        run: esa-cli deploy --name "${ESA_PROJECT_NAME}" --assets . --environment production --description "GitHub Actions deploy ${GITHUB_SHA}"
