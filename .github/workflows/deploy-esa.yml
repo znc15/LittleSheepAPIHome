@@ -44,7 +44,7 @@ jobs:
         run: npm install -g esa-cli@latest
 
       - name: Login to ESA
-        run: esa-cli login --ak "${ESA_ACCESS_KEY_ID}" --sk "${ESA_ACCESS_KEY_SECRET}"
+        run: esa-cli login
 
       - name: Deploy to ESA
         run: esa-cli deploy --name "${ESA_PROJECT_NAME}" --assets . --environment production --description "GitHub Actions deploy ${GITHUB_SHA}"
