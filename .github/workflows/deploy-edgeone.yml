@@ -31,6 +31,7 @@ jobs:
           fi
 
       - name: Deploy to EdgeOne Pages
+        # v1
         uses: TencentEdgeOne/edgeone-pages-action@025b878b4c30de49cf26d147b64190c76c292037
         with:
           token: ${{ secrets.EDGEONE_API_TOKEN }}
